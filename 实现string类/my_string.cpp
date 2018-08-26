@@ -15,9 +15,19 @@ public:
 	friend ostream& operator<<(ostream &os, String &str);//输出
 	bool operator==(const String &str); //相等
 	String& operator+=(const String &str);
+	String(String&& st); // 移动构造
+	String& operator=(String&& st); // 移动赋值
 private:
 	char *m_data;
 };
+String(String&& st):m_data(st.m_data) {
+	st.m_data = nullptr;
+}
+String& operator=(String&& st) {
+    m_data = st.m_data;
+    st.m_data = nullptr;
+    return *this;
+}
 String& String::operator+=(const String &str) {
 	*this = *this + str;
 	return *this;

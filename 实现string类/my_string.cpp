@@ -24,6 +24,8 @@ String(String&& st) noexcept :m_data(st.m_data) {
 	st.m_data = nullptr;
 }
 String& operator=(String&& st) noexcept {
+	if(this==&st) return *this;
+	delete[] m_data;
     m_data = st.m_data;
     st.m_data = nullptr;
     return *this;

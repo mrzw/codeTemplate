@@ -3,6 +3,7 @@
 #include <list>
 using namespace std;
 
+// 实现LRU 双向链表+HashMap
 class LRU {
 public:
     int capacity_;

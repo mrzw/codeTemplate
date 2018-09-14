@@ -44,4 +44,11 @@ int main() {
         cout << "该weak ptr不指向任一对象" << endl; // 可用于判断shared_ptr对象是否释放
     }
     std::shared_ptr<A> tmp9 = tmp8.lock(); // 返回share_ptr对象
+    std::shared_ptr<A> tmp10(tmp8);
+    cout << tmp8.use_count() << endl;
+    if(tmp10.unique()) {
+         cout << "唯一拥有该物体" << endl;
+    } else {
+        cout << "非唯一" << endl;
+    }
 }
